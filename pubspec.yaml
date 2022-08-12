@@ -1,3 +1,6 @@
+#프로젝트의 메타 데이터를 관리한다.
+#프로젝트의 버젼이나 dependency 등을 만든다.
+
 name: flutter_mild
 description: A new Flutter mild project.
 
