@@ -1,54 +1,146 @@
 import 'package:flutter/material.dart';
 
-       //fat arrow 
-void main() => runApp(MyApp()); //최상위 항목이라 하나만 있어도 된다. widget = argument
+void main() => runApp(const MyApp());
 
-//stl 입력
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( //위젯트리의 두번째 자리. 실질적으로 모든 위젯을 감싸고 있음.
-      title : 'First App',
-      theme: ThemeData(
-        //색상 견본 , 특정 색의 음영도를 기본 색으로 사용하겠다.
-        primarySwatch: Colors.blue
-      ) ,
-      // 앱 켰을 때 가장 먼저 보일 페이지
-      home: MyHomePage() ,
+    return const MaterialApp(
+      title : 'BBANTO',
+      home : Grade(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class Grade extends StatelessWidget {
+  const Grade({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Sca 입력, 다양한 화면을 그릴 수 있는 빈 도화지이다.
     return Scaffold(
+      backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('First app'),
+        title: const Text('BBANT',
+        style:TextStyle(
+          color: Colors.white,
+          letterSpacing: 2.0,
+          fontSize: 28.0,
+          fontWeight: FontWeight.bold
+        )
+        ),
+        backgroundColor: Colors.amber[700],
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
-        elevation: 0.0
+        elevation: 0.0,
       ),
-      body:
-        /*
-          Padding( padding : EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0) ),
-        */
-          Center(
-            // 가로 가운데 정렬은 Column 사용
-            child: Column(
-              // 세로 가운데 정렬은 MainAxisAlignment.center 사용
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding:const EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/gi.gif'),
+                radius: 60.0,
+              ),
+            ),
+            Divider(
+              height:60.0, // 얘의 뜻은 위로 30, 아래로 30 픽셀이라는거 ㅇㅇ
+              color: Colors.grey[850],
+              thickness: 0.5,
+              endIndent: 30.0,
+            ),
+            // ctrl + space 누르면 가진 속성들이 쫘악 나온다.
+            const Text("Name",
+              style: TextStyle(
+                color:Colors.white,
+                letterSpacing: 2.0
+              )
+            ),
+            // 줄간격 띄우고 싶을 때,
+            const SizedBox(
+              height : 10.0,
+            ),
+            const Text("BBANTO",
+                style: TextStyle(
+                    color:Colors.white,
+                    letterSpacing: 2.0,
+                    fontSize: 20.0,
+                )
+            ),
+            const SizedBox(
+              height : 30.0,
+            ),
+            const Text("BBANTO POWER LEVEL",
+                style: TextStyle(
+                    color:Colors.white,
+                    letterSpacing: 2.0
+                )
+            ),
+            // 줄간격 띄우고 싶을 때,
+            const SizedBox(
+              height : 10.0,
+            ),
+            const Text("14",
+                style: TextStyle(
+                  color:Colors.white,
+                  letterSpacing: 2.0,
+                  fontSize: 20.0,
+                )
+            ),
+            const SizedBox(
+              height : 30.0,
+            ),
+
+            //얘는 아이콘이랑 텍스트를 가로로 묶어주는거임.
+            Row(
               children: [
-                Text('Hello'),
-                Text('Hello'),
-                Text('Hello')
+                const Icon(Icons.check_circle_outline),
+                const SizedBox(
+                  height : 10.0,
+                ),
+                const Text('using lightsaber',
+                  style: TextStyle(
+                    fontSize :16,
+                    letterSpacing: 1.0
+                  )
+                ),
               ],
             ),
-          ),
-      );
+            Row(
+              children: [
+                const Icon(Icons.check_circle_outline),
+                const SizedBox(
+                  height : 10.0,
+                ),
+                const Text('face hero tattoo',
+                    style: TextStyle(
+                        fontSize :16,
+                        letterSpacing: 1.0
+                    )
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Icon(Icons.check_circle_outline),
+                const SizedBox(
+                  height : 10.0,
+                ),
+                const Text('fire flames',
+                    style: TextStyle(
+                        fontSize :16,
+                        letterSpacing: 1.0
+                    )
+                ),
+              ],
+            )
+          ],
+        )
+      )
+    );
   }
 }
+
 
